@@ -1,0 +1,53 @@
+docker compose down
+
+
+docker compose up --build
+
+
+5. Test FastAPI
+Open these URLs:
+1. Root endpoint
+
+http://localhost:7860/
+
+Expected response:
+{
+  "status": "ScalerGPT is live 📚",
+  "docs_indexed": 0,
+  "chroma_host": "chroma",
+  "chroma_port": 8000
+}
+
+
+
+2. Swagger UI
+
+http://localhost:7860/docs
+
+3. OpenAPI specification
+
+http://localhost:7860/openapi.json
+
+6. Test the /ask API
+In Swagger UI:
+1. Expand POST /ask.
+2. Click Try it out.
+3. Enter:
+{
+  "query": "What is RAG?"
+}
+
+
+4. Click Execute.
+
+Initially, you may receive:
+{
+  "detail": "No documents indexed. Run: docker compose exec app python ingest.py"
+}
+
+
+That is expected if your ChromaDB collection is empty.
+
+One important distinction: Your application is FastAPI, not Gradio. Your Dockerfile runs Uvicorn with FastAPI. Therefore, you should access its API through Swagger UI at /docs, not expect a Gradio interface.
+
+Fix the port mapping first. Then we can proceed with PDF ingestion and test your complete RAG pipeline.

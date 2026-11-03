@@ -1,0 +1,40 @@
+__pycache__/
+*.pyc
+venv/
+.venv/
+.git/
+.env
+*.ipynb
+eta_model.pkl
+data/raw/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Git
+.git/
+.gitignore
+
+# IDE settings
+.vscode/
+.idea/
+
+# Test and coverage files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+
+
+# Temporary files
+tmp/
+temp/
